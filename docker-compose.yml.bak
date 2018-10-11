@@ -1,0 +1,21 @@
+version: '2'
+services:
+  php:
+    image: sikad-php:7.1
+    volumes:
+      - /data/app/simatris/simatris/:/app
+  web:
+    image: sikad-nginx
+    volumes:
+      - /data/app/simatris/simatris/:/app                                                                                                                                                   
+    depends_on:
+      - php
+    ports:
+      - 81:80
+  mysql:
+    image: mysql:5.7.21
+    volumes:
+      - ./dbdata:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=simatris
+      - MYSQL_ROOT_PASSWORD=hesepisan

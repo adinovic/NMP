@@ -3,11 +3,11 @@ services:
   php:
     build: php/.
     volumes:
-      - /data/app/simatris/simatris/:/app
+      - ./app:/app
   web:
     build: nginx/.
     volumes:
-      - /data/app/simatris/simatris/:/app                                                                                                                                                   
+      - ./app/:/app                                                                                                                                                   
     depends_on:
       - php
     ports:
@@ -17,5 +17,5 @@ services:
     volumes:
       - ./dbdata:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=simatris
-      - MYSQL_ROOT_PASSWORD=hesepisan
+      - MYSQL_DATABASE=dbname
+      - MYSQL_ROOT_PASSWORD=rootpw
